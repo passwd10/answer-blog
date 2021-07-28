@@ -1,22 +1,20 @@
-import * as React from 'react';
+import React from 'react';
 
-// styles
-const pageStyles = {
-  color: '#232129',
-  padding: 96,
-  fontFamily: '-apple-system, Roboto, sans-serif, serif',
-};
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
-// markup
-const IndexPage: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
+    <Layout>
+      <SEO
+        title={'HOME | Answer\'s blog'}
+        description={'개발 흔적을 남기는 블로그'}
+      />
       <div>
         Hello World!
       </div>
-    </main>
+    </Layout>
   );
 };
 
-export default IndexPage;
+export default HomePage;
