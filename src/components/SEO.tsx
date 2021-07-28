@@ -9,7 +9,9 @@ type Props = {
 
 const SEO: React.FC<Props> = ({ title, description, image }) => {
   return (
-    <Helmet>
+    <Helmet
+      htmlAttributes={{ 'lang': 'en' }}
+    >
       <meta charSet='UTF-8' />
       <meta name='description' content={description} />
       <meta property='og:title' content={title}/>
