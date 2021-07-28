@@ -6,8 +6,22 @@ import Image from 'gatsby-image';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
+type QueryProps = {
+  avatar: {
+    childImageSharp: {
+      fixed: {
+        base64: string,
+        width: number,
+        height: number,
+        src: string,
+        srcSet: string,
+      }
+    }
+  }
+}
+
 const HomePage: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<QueryProps>(graphql`
     query {
       avatar: file(relativePath: {regex: "/dog.jpeg/"}) {
         childImageSharp {
