@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        icon: 'src/static/favicon.png',
       },
     },
     'gatsby-transformer-remark',
@@ -48,6 +48,14 @@ module.exports = {
         stages: ['develop'],
         extensions: ['js', 'jsx', 'ts', 'tsx'],
         exclude: ['node_modules', '.cache', 'public'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://answer.gatsbyjs.io',
+        sitemap: 'https://answer.gatsbyjs.io/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
   ],
