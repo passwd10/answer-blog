@@ -1,13 +1,12 @@
 import React from 'react';
 
-import Image from 'gatsby-image';
-
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
 import GitHubIcon from './icons/GitHubIcon';
 import MailIcon from './icons/MailIcon';
 import CVIcon from './icons/CVIcon';
+import RocketIcon from './icons/RocketIcon';
 
 type Props = {
   data: {
@@ -35,10 +34,7 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
   return (
     <Container>
       <ImageWrapper>
-        <Image
-          fixed={data.avatar.childImageSharp.fixed}
-          style={{ marginBottom: '-5px' }}
-        />
+        <RocketIcon />
       </ImageWrapper>
       <Spacer />
       <Title>
@@ -87,7 +83,6 @@ const bounce = keyframes`
 
 const ImageWrapper = styled.span`
   animation: ${bounce} 3s ease infinite;
-  box-shadow: 0px 3px 5px 3px gray;
 `;
 
 const Socials = styled.ul`
@@ -101,11 +96,12 @@ const Socials = styled.ul`
 `;
 
 const Spacer = styled.div`
-  margin-top: 0.5em;
+  margin-top: 1em;
 `;
 
 const Title = styled.h1`
-  margin-bottom: 0;
+  color: #e8e4e4;
+  margin-top: 0.5em;
 `;
 
 export default HomeContainer;
