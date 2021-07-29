@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 import { css, Global } from '@emotion/core';
+import { keyframes } from '@emotion/react';
 
 type Props = {
   children: React.ReactNode;
@@ -25,9 +26,18 @@ const reset = css`
   }
 `;
 
+const bounce = keyframes`
+  0%{background-position:0% 100%}
+  50%{background-position:100% 0%}
+  100%{background-position:0% 100%}
+`;
+
 const StyledLayout = styled.div`
   width: 100%;
   min-height: 100vh;
+  background: linear-gradient(228deg, #149191, #3e5d6d, #0c2c60, #21224d);
+  background-size: 400% 400%;
+  animation: ${bounce} 8s ease infinite;
 `;
 
 export default Layout;
