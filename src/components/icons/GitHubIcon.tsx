@@ -4,8 +4,8 @@ const GitHubIcon: React.FC = () => {
   return (
     <svg
       className="octicon octicon-mark-github v-align-middle"
-      height="24"
-      width="24"
+      height="20"
+      width="20"
       viewBox="0 0 16 16"
       version="1.1"
       aria-hidden="true"
