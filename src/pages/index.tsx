@@ -50,7 +50,6 @@ const HomePage: React.FC = () => {
       <SEO
         title={`HOME | ${data.site.siteMetadata.title}`}
         description={data.site.siteMetadata.description}
-        image={data.avatar.childImageSharp.fixed.src}
       />
       <HomeContainer data={data}/>
     </Layout>
