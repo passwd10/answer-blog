@@ -21,6 +21,12 @@ type Props = {
           srcSet: string,
         }
       }
+    },
+    site: {
+      siteMetadata: {
+        title: string,
+        description: string,
+      }
     }
   }
 }
@@ -34,6 +40,10 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
           style={{ marginBottom: '-5px' }}
         />
       </ImageWrapper>
+      <Spacer />
+      <Title>
+        {data.site.siteMetadata.description}
+      </Title>
       <Spacer />
       <Socials>
         <li>
@@ -91,7 +101,11 @@ const Socials = styled.ul`
 `;
 
 const Spacer = styled.div`
-  margin: 1em;
+  margin-top: 0.5em;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 0;
 `;
 
 export default HomeContainer;

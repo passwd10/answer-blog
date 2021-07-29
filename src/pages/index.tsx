@@ -17,6 +17,12 @@ type QueryProps = {
         srcSet: string,
       }
     }
+  },
+  site: {
+    siteMetadata: {
+      title: string,
+      description: string,
+    }
   }
 }
 
@@ -30,14 +36,20 @@ const HomePage: React.FC = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          title
+          description
+        }
+      }
     }
   `);
 
   return (
     <Layout>
       <SEO
-        title={'HOME | Answer\'s blog'}
-        description={'개발 흔적을 남기는 블로그'}
+        title={`HOME | ${data.site.siteMetadata.title}`}
+        description={data.site.siteMetadata.description}
         image={data.avatar.childImageSharp.fixed.src}
       />
       <HomeContainer data={data}/>
