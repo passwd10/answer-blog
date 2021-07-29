@@ -15,7 +15,8 @@ const Layout: React.FC<Props> = ({ children }) => {
 };
 
 const StyledLayout = styled.div`
-
+  width: 100%;
+  min-height: 100vh;
 `;
 
 export default Layout;
