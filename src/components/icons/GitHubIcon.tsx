@@ -9,6 +9,7 @@ const GitHubIcon: React.FC = () => {
       viewBox="0 0 16 16"
       version="1.1"
       aria-hidden="true"
+      fill="#e8e4e4"
     >
       <path
         fillRule="evenodd"
