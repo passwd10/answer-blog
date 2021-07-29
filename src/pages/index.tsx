@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
       <SEO
         title={'HOME | Answer\'s blog'}
         description={'개발 흔적을 남기는 블로그'}
-        image={data.avatar.childImageSharp.fixed.base64}
+        image={data.avatar.childImageSharp.fixed.src}
       />
       <Image fixed={data.avatar.childImageSharp.fixed}/>
     </Layout>

@@ -17,7 +17,7 @@ const SEO: React.FC<Props> = ({ title, description, image }) => {
       <meta property='og:title' content={title}/>
       <meta property='og:type' content='website'/>
       <meta property='og:description' content={description}/>
-      <meta name='og:image' content={`https://answer.gatsbyjs.io${image}`} />
+      <meta property='og:image' content={`https://answer.gatsbyjs.io${image}`} />
       <title>{title}</title>
     </Helmet>
   );
