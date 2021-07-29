@@ -7,6 +7,7 @@ import { keyframes } from '@emotion/react';
 
 import GitHubIcon from './icons/GitHubIcon';
 import MailIcon from './icons/MailIcon';
+import CVIcon from './icons/CVIcon';
 
 type Props = {
   data: {
@@ -36,10 +37,19 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
       <Spacer />
       <Socials>
         <li>
-          <GitHubIcon/>
+          <a href='https://github.com/passwd10'>
+            <GitHubIcon/>
+          </a>
         </li>
         <li>
-          <MailIcon />
+          <a href='https://inseo9494@gmail.com'>
+            <MailIcon />
+          </a>
+        </li>
+        <li>
+          <a href='/'>
+            <CVIcon />
+          </a>
         </li>
       </Socials>
     </Container>
@@ -71,8 +81,13 @@ const ImageWrapper = styled.span`
 `;
 
 const Socials = styled.ul`
+  width: 10em;
+  padding: 0;
   display: flex;
+  flex-direction: row;
   list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
 `;
 
 const Spacer = styled.div`
