@@ -48,7 +48,7 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
           </a>
         </li>
         <li>
-          <a href='https://inseo9494@gmail.com'>
+          <a href='mailto:inseo9494@gmail.com'>
             <MailIcon />
           </a>
         </li>
