@@ -43,17 +43,17 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
       <Spacer />
       <Socials>
         <li>
-          <a href='https://github.com/passwd10'>
+          <a href='https://github.com/passwd10' aria-label='github'>
             <GitHubIcon/>
           </a>
         </li>
         <li>
-          <a href='mailto:inseo9494@gmail.com'>
+          <a href='mailto:inseo9494@gmail.com' aria-label='mail'>
             <MailIcon />
           </a>
         </li>
         <li>
-          <a href='/'>
+          <a href='/' aria-label='CV'>
             <CVIcon />
           </a>
         </li>
