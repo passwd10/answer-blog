@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://answer.gatsbyjs.io/',
     title: 'Answer\'s blog',
-    description: 'Bring ideas to life',
+    description: 'I love hamburger',
   },
   plugins: [
     'gatsby-plugin-netlify-cms',
