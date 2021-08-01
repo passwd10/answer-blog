@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title={`HOME | ${data.site.siteMetadata.title}`}
+        title={'HOME | Park Answer'}
         description={data.site.siteMetadata.description}
       />
       <HomeContainer data={data}/>

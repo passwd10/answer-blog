@@ -54,7 +54,7 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
           </a>
         </li>
         <li>
-          <a href='/' aria-label='CV'>
+          <a href='/aboutme' aria-label='CV'>
             <CVIcon />
           </a>
         </li>
