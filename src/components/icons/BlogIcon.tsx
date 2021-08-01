@@ -28,6 +28,11 @@ const FillChange = keyframes`
 const SVG = styled.svg`
   fill: #e8e4e4;
   animation: ${FillChange} 4s ease infinite;
+
+  &:hover {
+    animation: none;
+    fill: #bd2121;
+  }
 `;
 
 export default BlogIcon;
