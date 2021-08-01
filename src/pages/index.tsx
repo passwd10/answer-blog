@@ -29,7 +29,7 @@ type QueryProps = {
 const HomePage: React.FC = () => {
   const data = useStaticQuery<QueryProps>(graphql`
     query {
-      avatar: file(relativePath: {regex: "/dog.jpeg/"}) {
+      avatar: file(relativePath: {regex: "/profile.jpeg/"}) {
         childImageSharp {
           fixed {
             ...GatsbyImageSharpFixed

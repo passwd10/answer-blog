@@ -1,12 +1,13 @@
 import React from 'react';
 
+import Image from 'gatsby-image';
+
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
 import GitHubIcon from './icons/GitHubIcon';
 import MailIcon from './icons/MailIcon';
 import CVIcon from './icons/CVIcon';
-import RocketIcon from './icons/RocketIcon';
 
 type Props = {
   data: {
@@ -34,7 +35,15 @@ const HomeContainer: React.FC<Props> = ({ data }) => {
   return (
     <Container>
       <ImageWrapper>
-        <RocketIcon />
+        <Image
+          fixed={data.avatar.childImageSharp.fixed}
+          alt="profile"
+          style={{
+            width: '10em',
+            height: '10em',
+            borderRadius: '100%',
+          }}
+        />
       </ImageWrapper>
       <Spacer />
       <Title>
@@ -99,9 +108,16 @@ const Spacer = styled.div`
   margin-top: 1em;
 `;
 
+const ColorChange = keyframes`
+  0%{color: #e8e4e4}
+  50%{color: #000}
+  100%{color: #e8e4e4}
+`;
+
 const Title = styled.h1`
   color: #e8e4e4;
   margin-top: 0.5em;
+  animation: ${ColorChange} 8s ease infinite;
 `;
 
 export default HomeContainer;

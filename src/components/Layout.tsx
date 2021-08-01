@@ -35,7 +35,7 @@ const bounce = keyframes`
 const StyledLayout = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(228deg, #149191, #3e5d6d, #0c2c60, #21224d);
+  background: linear-gradient(228deg, #e8e4e4,  #000);
   background-size: 400% 400%;
   animation: ${bounce} 8s ease infinite;
 `;
