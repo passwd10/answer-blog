@@ -23,10 +23,31 @@ type QueryProps = {
       title: string,
       description: string,
     }
+  },
+  allMarkdownRemark: {
+    edges: [{
+      node: {
+        id: string,
+        excerpt: string,
+        frontmatter: {
+          category: string,
+          date: string,
+          title: string,
+          thumbnail: string,
+          description: string,
+        }
+      }
+    }]
   }
 }
 
-const HomePage: React.FC = () => {
+type Props = {
+  location: {
+    search: string,
+  }
+}
+
+const HomePage: React.FC<Props> = ({ location }) => {
   const data = useStaticQuery<QueryProps>(graphql`
     query {
       avatar: file(relativePath: {regex: "/profile.jpeg/"}) {
@@ -42,6 +63,21 @@ const HomePage: React.FC = () => {
           description
         }
       }
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            excerpt(pruneLength: 30, truncate: true)
+            frontmatter {
+              category
+              date(formatString: "YYYY MM DD HH:mm")
+              title
+              thumbnail
+              description
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -51,7 +87,10 @@ const HomePage: React.FC = () => {
         title={'HOME | Park Answer'}
         description={data.site.siteMetadata.description}
       />
-      <HomeContainer data={data}/>
+      <HomeContainer
+        data={data}
+        search={location.search}
+      />
     </Layout>
   );
 };
