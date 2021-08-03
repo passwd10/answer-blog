@@ -50,15 +50,17 @@ const Categories: React.FC<Props> = ({ setCategory }) => {
 
   return (
     <>
-      {window.location.search
-        ? <ColumnCategories
-          categories={categories}
-          handleOnClick={handleOnClick}
-        />
-        : <GridCategories
-          categories={categories}
-          handleOnClick={handleOnClick}
-        />
+      {typeof window !== 'undefined'
+        ? window.location.search
+          ? <ColumnCategories
+            categories={categories}
+            handleOnClick={handleOnClick}
+          />
+          : <GridCategories
+            categories={categories}
+            handleOnClick={handleOnClick}
+          />
+        : null
       }
     </>
   );

@@ -84,7 +84,9 @@ const HomeContainer: React.FC<Props> = ({ data, search }) => {
         setCategory={setCategory}
         searchValue={searchValue}
       />
-      {window.location.search && <Thumbnails posts={posts}/> }
+      {typeof window !== 'undefined'
+        ? window.location.search && <Thumbnails posts={posts}/>
+        : null }
     </Container>
   );
 };
