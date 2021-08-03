@@ -19,18 +19,20 @@ const GNB: React.FC = () => {
   return (
     <StyledGNB>
       <Ul>
-        <a href='/' aria-label='home'>
-          <Li>
-            HOME
-          </Li>
-        </a>
-        <a href='/about' aria-label='about'>
-          <Li>
-            ABOUT
-          </Li>
-        </a>
         <Li>
-          CONTACT
+          <Link href='/' aria-label='home' >
+            HOME
+          </Link>
+        </Li>
+        <Li>
+          <Link href='/about' aria-label='about' >
+            ABOUT
+          </Link>
+        </Li>
+        <Li>
+          <Link href='mailto:inseo9494@gmail.com' aria-label='mail' >
+            CONTACT
+          </Link>
         </Li>
       </Ul>
       <Title>
@@ -67,6 +69,7 @@ const Ul = styled.ul`
   position: absolute;
   top: 0;
   right: 260px;
+  z-index: 10;
   display: flex;
   list-style: none;
   align-items: center;
@@ -76,6 +79,14 @@ const Ul = styled.ul`
 const Li = styled.li`
   margin: 20px;
   color: #e3e3e3;
+`;
+
+const Link = styled.a`
+  color: #e3e3e3;
+
+  :hover {
+    color: #ffcc00;
+  }
 `;
 
 export default GNB;
