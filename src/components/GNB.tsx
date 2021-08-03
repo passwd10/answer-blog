@@ -44,8 +44,8 @@ const GNB: React.FC = () => {
 
 const StyledGNB = styled.div`
   width: 100%;
-  height: 160px;
-  background: linear-gradient(to bottom, #61574f, #a68a64);
+  height: 200px;
+  background: #FFF;
 `;
 
 const bounce = keyframes`
@@ -82,10 +82,10 @@ const Li = styled.li`
 `;
 
 const Link = styled.a`
-  color: #e3e3e3;
+  color: #003049;
 
   :hover {
-    color: #ffcc00;
+    color: #ff6200;
   }
 `;
 

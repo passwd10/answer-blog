@@ -5,8 +5,8 @@ const HamburgerIcon: React.FC = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
-      width="100px"
-      height="100px"
+      width="60px"
+      height="60px"
       viewBox="0 0 512 512"
       xmlSpace="preserve"
     >
