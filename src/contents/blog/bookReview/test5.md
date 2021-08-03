@@ -1,7 +1,7 @@
 ---
 title: 'Test5'
 date: 2021-06-01 23:47:00
-category: 'category1'
+category: ''
 thumbnail: 'thumbnails/javascript.png'
 ---
 

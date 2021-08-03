@@ -1,8 +1,8 @@
 ---
-title: 'Test9'
-date: 2021-07-13 23:47:00
-category: 'category1'
-thumbnail: 'thumbnails/javascript.png'
+title: 'Test6'
+date: 2021-07-01 23:47:00
+category: ''
+thumbnail: 'thumbnails/dog.jpeg'
 ---
 
 ## Quck Start
