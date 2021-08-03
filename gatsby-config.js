@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://answer.gatsbyjs.io/',
     title: 'Answer\'s blog',
-    description: 'I love hamburger',
+    description: 'Bring ideas to life',
   },
   plugins: [
     'gatsby-plugin-netlify-cms',
@@ -42,6 +42,13 @@ module.exports = {
         path: './src/pages/',
       },
       __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'contents',
+        path: './src/contents/',
+      },
     },
     {
       resolve: 'gatsby-plugin-eslint',
