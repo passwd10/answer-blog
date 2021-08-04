@@ -36,6 +36,16 @@ const GridCategories = styled.div`
   grid-row-gap: 2em;
   grid-column-gap: 2em;
   grid-auto-flow: dense;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: repeat(3, minmax(220px, auto));
+    grid-template-rows: repeat(3, minmax(300px, auto));
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(3, minmax(80px, auto));
+    grid-template-rows: repeat(3, minmax(110px, auto));
+  }
 `;
 
 const ThumbnailContainer = styled.span`
@@ -49,6 +59,12 @@ const ThumbnailContainer = styled.span`
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
+
+  @media (max-width: 750px) {
+    width: 80px;
+    height: 100px;
+    background: transparent;
+  }
 `;
 
 const ThumbnailLine = styled.div`
@@ -64,12 +80,21 @@ const ThumbnailTitle = styled.span`
   display: inline-block;
   font-weight: bold;
   color: #003049;
+
+  @media (max-width: 750px) {
+    font-size: 0.7em;
+    color: #f4f4f4;
+  }
 `;
 
 const Description = styled.span`
   display: inline-block;
   font-size: 12px;
   color: #676767;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;
 
 const Thumbnail = styled.li`
@@ -80,6 +105,10 @@ const Thumbnail = styled.li`
   border-bottom-right-radius: 7%;
   box-shadow: rgba(65, 61, 57, 0.4) 5px 5px, rgba(65, 61, 57, 0.3) 10px 10px, rgba(65, 61, 57, 0.2) 15px 15px;
   cursor: pointer;
+
+  @media (max-width: 750px) {
+    box-shadow: rgba(65, 61, 57, 0.4) 2px 2px, rgba(65, 61, 57, 0.3) 4px 4px, rgba(65, 61, 57, 0.2) 6px 6px;
+  }
 `;
 
 type ThumbnailProps = {

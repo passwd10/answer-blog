@@ -1,7 +1,7 @@
 import React from 'react';
 
 import GridCategories from './GridCategories';
-import ColumnCategories from './ColumnCategories';
+import SideCategories from './SideCategories';
 
 const categories = [
   {
@@ -37,22 +37,23 @@ const categories = [
 ];
 
 type Props = {
-  setCategory: React.Dispatch<(prevState: string) => undefined>,
-  searchValue: string
+  selectedCategory: string,
+  setSelectedCategory: React.Dispatch<(prevState: string) => undefined>,
 }
 
-const Categories: React.FC<Props> = ({ setCategory }) => {
+const Categories: React.FC<Props> = ({ selectedCategory, setSelectedCategory }) => {
   const handleOnClick = (event) => {
     const path = event.target.closest('li').dataset.path;
     window.history.pushState('data', 'category', `?category=${path}`);
-    setCategory(path);
+    setSelectedCategory(path);
   };
 
   return (
     <>
       {typeof window !== 'undefined'
         ? window.location.search
-          ? <ColumnCategories
+          ? <SideCategories
+            selectedCategory={selectedCategory}
             categories={categories}
             handleOnClick={handleOnClick}
           />

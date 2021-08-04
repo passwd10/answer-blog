@@ -2,7 +2,8 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
-import { keyframes } from '@emotion/react';
+
+import HamburgerMenu from './HamburgerMenu';
 
 const GNB: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -16,8 +17,10 @@ const GNB: React.FC = () => {
     }
   `);
 
+
   return (
     <StyledGNB>
+      <HamburgerMenu />
       <Ul>
         <Li>
           <Link href='/' aria-label='home' >
@@ -43,18 +46,12 @@ const GNB: React.FC = () => {
 };
 
 const StyledGNB = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 200px;
   background: #FFF;
-`;
 
-const bounce = keyframes`
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(0, 10px);
+  @media (max-width: 750px) {
+    height: 140px;
   }
 `;
 
@@ -62,18 +59,19 @@ const Title = styled.h1`
   text-align: center;
   padding-top: 60px;
   color: #003049;
-  animation: ${bounce} 4s ease infinite;
 `;
 
 const Ul = styled.ul`
-  position: absolute;
-  top: 0;
-  right: 260px;
+  padding-left: 37%;
   z-index: 10;
   display: flex;
   list-style: none;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;
 
 const Li = styled.li`

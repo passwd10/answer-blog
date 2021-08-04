@@ -3,7 +3,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import styled from '@emotion/styled';
 
 import Categories from '../components/Categories';
-import Thumbnails from '../components/Posts';
+import Thumbnails from './Thumbnails';
 
 type Props = {
   data: {
@@ -47,7 +47,7 @@ type Post = {
 
 const HomeContainer: React.FC<Props> = ({ data, search }) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [category, setCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const [searchKey, searchValue] = search?.split('=');
 
@@ -62,7 +62,7 @@ const HomeContainer: React.FC<Props> = ({ data, search }) => {
         );
 
       setPosts(filterdPosts);
-      setCategory(searchValue);
+      setSelectedCategory(searchValue);
     }
   }, []);
 
@@ -71,18 +71,18 @@ const HomeContainer: React.FC<Props> = ({ data, search }) => {
       .allMarkdownRemark
       .edges
       .filter(edge =>
-        category === 'all' ||
-        edge.node.frontmatter.category === category
+        selectedCategory === 'all' ||
+        edge.node.frontmatter.category === selectedCategory
       );
 
     setPosts(filterdPosts);
-  }, [category]);
+  }, [selectedCategory]);
 
   return (
     <Container>
       <Categories
-        setCategory={setCategory}
-        searchValue={searchValue}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
       {typeof window !== 'undefined'
         ? window.location.search && <Thumbnails posts={posts}/>
