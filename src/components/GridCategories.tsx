@@ -6,30 +6,30 @@ import { Category } from './Categories';
 
 type Props = {
   categories: Category[],
-  handleOnClick: any,
 }
 
-const Categories: React.FC<Props> = ({ categories, handleOnClick }) => {
+const Categories: React.FC<Props> = ({ categories }) => {
   return (
-    <GridCategories>
+    <Container>
       {categories.map((category, index) =>
-        <Thumbnail
+        <Link
+          href={category.path}
           key={index}
-          data-path={category.path}
-          onClick={handleOnClick}
         >
-          <ThumbnailCover color={category.color}>
-            <ThumbnailLine />
-            <ThumbnailTitle>{category.title}</ThumbnailTitle>
-            <Description>{category.description}</Description>
-          </ThumbnailCover>
-        </Thumbnail>
+          <Thumbnail>
+            <ThumbnailCover color={category.color}>
+              <ThumbnailLine />
+              <ThumbnailTitle>{category.title}</ThumbnailTitle>
+              <Description>{category.description}</Description>
+            </ThumbnailCover>
+          </Thumbnail>
+        </Link>
       )}
-    </GridCategories>
+    </Container>
   );
 };
 
-const GridCategories = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(180px, auto));
   grid-template-rows: repeat(2, minmax(240px, auto));
@@ -48,6 +48,12 @@ const GridCategories = styled.div`
     grid-row-gap: 1em;
     grid-column-gap: 1em;
   }
+`;
+
+const Link = styled.a`
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 const ThumbnailLine = styled.div`
@@ -93,6 +99,8 @@ const Description = styled.span`
 `;
 
 const Thumbnail = styled.li`
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
