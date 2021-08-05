@@ -1,37 +1,63 @@
 import React from 'react';
 
+import { useStaticQuery, graphql } from 'gatsby';
+
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
 import HamburgerIcon from './icons/HamburgerIcon';
 
-type Post = {
-  node: {
-    id: string,
-    excerpt: string,
-    frontmatter: {
-      category: string,
-      date: string,
-      title: string,
-      thumbnail: string,
-      description: string,
-    }
+type QueryProps = {
+  allMarkdownRemark: {
+    edges: [{
+      node: {
+        id: string,
+        excerpt: string,
+        frontmatter: {
+          category: string,
+          date: string,
+          title: string,
+          thumbnail: string,
+          description: string,
+        }
+      }
+    }]
   }
 }
 
-type Props = {
-  posts: Post[]
-}
 
-const Thumbnails: React.FC<Props> = ({ posts }) => {
+const Thumbnails: React.FC = () => {
+  const data = useStaticQuery<QueryProps>(graphql`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            excerpt(pruneLength: 30, truncate: true)
+            frontmatter {
+              category
+              date(formatString: "YYYY MM DD HH:mm")
+              title
+              thumbnail
+              description
+            }
+          }
+        }
+      }
+    }
+  `);
+  const searchValue = window.location.search.split('=')[1];
+  const filterdPosts = data.allMarkdownRemark.edges.filter(edge =>
+    searchValue === 'all' || edge.node.frontmatter.category === searchValue);
+
   return (
     <Container>
-      {posts.length === 0 ?
+      {filterdPosts.length === 0 ?
         <div>
           작성된 글이 없습니다
         </div> :
         <Posts>
-          {posts.map(({ node }) => {
+          {filterdPosts.map(({ node }) => {
             return (
               <Thumbnail
                 key={node.id}

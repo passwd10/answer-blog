@@ -41,13 +41,7 @@ type QueryProps = {
   }
 }
 
-type Props = {
-  location: {
-    search: string,
-  }
-}
-
-const HomePage: React.FC<Props> = ({ location }) => {
+const HomePage: React.FC = () => {
   const data = useStaticQuery<QueryProps>(graphql`
     query {
       avatar: file(relativePath: {regex: "/profile.jpeg/"}) {
@@ -87,10 +81,7 @@ const HomePage: React.FC<Props> = ({ location }) => {
         title={'HOME | Park Answer'}
         description={data.site.siteMetadata.description}
       />
-      <HomeContainer
-        data={data}
-        search={location.search}
-      />
+      <HomeContainer/>
     </Layout>
   );
 };

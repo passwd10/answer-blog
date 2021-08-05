@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import GridCategories from './GridCategories';
 import SideCategories from './SideCategories';
 
-export type Category = {
+type Category = {
   title: string,
   description: string,
   color: string,
@@ -43,27 +43,12 @@ const categories: Category[] = [
   },
 ];
 
-type Props = {
-  selectedCategory: string,
-  setSelectedCategory: React.Dispatch<(prevState: string) => string>,
-}
-
-const Categories: React.FC<Props> = ({ selectedCategory, setSelectedCategory }) => {
-  const handleOnClick = (event: React.MouseEvent) => {
-    const path = event.target.closest('li').dataset.path;
-    window.history.pushState('data', 'category', `?category=${path}`);
-    setSelectedCategory(path);
-  };
-
+const Categories: React.FC = () => {
   return (
     <>
       {typeof window !== 'undefined'
         ? window.location.search
-          ? <SideCategories
-            selectedCategory={selectedCategory}
-            categories={categories}
-            handleOnClick={handleOnClick}
-          />
+          ? <SideCategories categories={categories}/>
           : <GridCategories categories={categories}/>
         : null
       }

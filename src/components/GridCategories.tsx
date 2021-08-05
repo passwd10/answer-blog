@@ -2,7 +2,12 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { Category } from './Categories';
+type Category = {
+  title: string,
+  description: string,
+  color: string,
+  path: string,
+}
 
 type Props = {
   categories: Category[],

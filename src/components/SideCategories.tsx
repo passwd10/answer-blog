@@ -2,24 +2,26 @@ import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
 
-const categoriesAlias = {
-  'all': '전체',
-  'javascript': 'JS',
-  'retrospect': '회고',
-  'bookReview': '서평',
-  'web': 'WEB',
+const categoriesAlias: any = {
+  '?category=all': '전체',
+  '?category=javascript': 'JS',
+  '?category=retrospect': '회고',
+  '?category=bookReview': '서평',
+  '?category=web': 'WEB',
 };
 
-type Props = {
-  selectedCategory: string,
-  categories: any,
-  handleOnClick: any,
+type Category = {
+  title: string,
+  description: string,
+  color: string,
+  path: string,
 }
 
-const SideCategories: React.FC<Props> = ({
-  selectedCategory,
-  categories,
-  handleOnClick }) => {
+type Props = {
+  categories: Category[],
+}
+
+const SideCategories: React.FC<Props> = ({ categories }) => {
   const [isClickedIcon, setIsClickedIcon] = useState(false);
 
   const handleOnClickIcon = () => {
@@ -29,25 +31,32 @@ const SideCategories: React.FC<Props> = ({
   return (
     <Container>
       <Icon onClick={handleOnClickIcon}>
-        {categoriesAlias[selectedCategory]}
+        {categoriesAlias[window.location.search]}
       </Icon>
       <Categories
         isClickedIcon={isClickedIcon}
         onClick={handleOnClickIcon}
       >
         {categories.map((category, index) =>
-          <Thumbnail
+          <Link
+            href={category.path}
             key={index}
-            data-path={category.path}
-            onClick={handleOnClick}
           >
-            <ThumbnailTitle>{category.title}</ThumbnailTitle>
-          </Thumbnail>
+            <Thumbnail>
+              <ThumbnailTitle>{category.title}</ThumbnailTitle>
+            </Thumbnail>
+          </Link>
         )}
       </Categories>
     </Container>
   );
 };
+
+const Link = styled.a`
+  display: block;
+  width: 100%;
+  height: 100%;
+`;
 
 const Container = styled.div``;
 
