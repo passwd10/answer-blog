@@ -48,7 +48,6 @@ const GNB: React.FC = () => {
 const StyledGNB = styled.div`
   width: 100vw;
   height: 200px;
-  background: #FFF;
 
   @media (max-width: 750px) {
     height: 140px;
@@ -57,8 +56,10 @@ const StyledGNB = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  padding-top: 60px;
+  padding-top: 40px;
   color: #003049;
+  font-family: 'DancingScript';
+  font-size: 40px;
 `;
 
 const Ul = styled.ul`

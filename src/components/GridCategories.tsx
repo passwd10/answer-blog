@@ -2,8 +2,10 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
+import { Category } from './Categories';
+
 type Props = {
-  categories: any,
+  categories: Category[],
   handleOnClick: any,
 }
 
@@ -16,13 +18,11 @@ const Categories: React.FC<Props> = ({ categories, handleOnClick }) => {
           data-path={category.path}
           onClick={handleOnClick}
         >
-          <ThumbnailZoomIn thumbnailUrl={category.image}>
+          <ThumbnailCover color={category.color}>
             <ThumbnailLine />
-            <ThumbnailContainer>
-              <ThumbnailTitle>{category.title}</ThumbnailTitle>
-              <Description>{category.description}</Description>
-            </ThumbnailContainer>
-          </ThumbnailZoomIn>
+            <ThumbnailTitle>{category.title}</ThumbnailTitle>
+            <Description>{category.description}</Description>
+          </ThumbnailCover>
         </Thumbnail>
       )}
     </GridCategories>
@@ -31,39 +31,22 @@ const Categories: React.FC<Props> = ({ categories, handleOnClick }) => {
 
 const GridCategories = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(220px, auto));
-  grid-template-rows: repeat(2, minmax(300px, auto));
+  grid-template-columns: repeat(4, minmax(180px, auto));
+  grid-template-rows: repeat(2, minmax(240px, auto));
   grid-row-gap: 2em;
   grid-column-gap: 2em;
   grid-auto-flow: dense;
 
   @media (max-width: 1000px) {
-    grid-template-columns: repeat(3, minmax(220px, auto));
-    grid-template-rows: repeat(3, minmax(300px, auto));
+    grid-template-columns: repeat(3, minmax(180px, auto));
+    grid-template-rows: repeat(3, minmax(240px, auto));
   }
 
   @media (max-width: 750px) {
-    grid-template-columns: repeat(3, minmax(80px, auto));
-    grid-template-rows: repeat(3, minmax(110px, auto));
-  }
-`;
-
-const ThumbnailContainer = styled.span`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #fff;
-  width: 140px;
-  height: 180px;
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 5px;
-
-  @media (max-width: 750px) {
-    width: 80px;
-    height: 100px;
-    background: transparent;
+    grid-template-columns: repeat(3, minmax(100px, auto));
+    grid-template-rows: repeat(3, minmax(130px, auto));
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
   }
 `;
 
@@ -74,23 +57,35 @@ const ThumbnailLine = styled.div`
   width: 2px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 750px) {
+    left: 5px;
+    width: 1px;
+  }
 `;
 
 const ThumbnailTitle = styled.span`
-  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
   font-weight: bold;
-  color: #003049;
+  color: #eeeeee;
+  font-size: 1.4em;
 
   @media (max-width: 750px) {
-    font-size: 0.7em;
-    color: #f4f4f4;
+    font-size: 0.9em;
+    color: #eeeeee;
+    left: 10px;
   }
 `;
 
 const Description = styled.span`
-  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
   font-size: 12px;
-  color: #676767;
+  color: #f4f4f4;
+  width: 80%;
 
   @media (max-width: 750px) {
     display: none;
@@ -99,41 +94,70 @@ const Description = styled.span`
 
 const Thumbnail = styled.li`
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   list-style: none;
   border-top-right-radius: 7%;
   border-bottom-right-radius: 7%;
-  box-shadow: rgba(65, 61, 57, 0.4) 5px 5px, rgba(65, 61, 57, 0.3) 10px 10px, rgba(65, 61, 57, 0.2) 15px 15px;
   cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0, .1), 0 9px 20px 0 rgba(0,0,0, .25);
+  transition: .3s linear;
+  z-index: 3;
 
-  @media (max-width: 750px) {
-    box-shadow: rgba(65, 61, 57, 0.4) 2px 2px, rgba(65, 61, 57, 0.3) 4px 4px, rgba(65, 61, 57, 0.2) 6px 6px;
+  &:before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -6px;
+    border-top-right-radius: 7%;
+    border-bottom-right-radius: 7%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: #ebebeb;
+    border: 1px solid #aeadad;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -9px;
+    border-top-right-radius: 7%;
+    border-bottom-right-radius: 7%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: #ebebeb;
+    border: 1px solid #aeadad;
+  }
+  &:hover {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0, .25), 0 9px 20px 0 rgba(0,0,0, .45);
   }
 `;
 
 type ThumbnailProps = {
-  thumbnailUrl: string
+  color: string
 }
 
-const ThumbnailZoomIn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+const ThumbnailCover = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #b6ad90;
-  background-image: url(${(props: ThumbnailProps) => props.thumbnailUrl});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  transform-origin: left;
+  transition: all .45s ease;
+  padding: 30px 0;
+  border-top-right-radius: 7%;
+  border-bottom-right-radius: 7%;
+  background: ${(props: ThumbnailProps) => props.color};
+  z-index: 4;
 
-  transition: transform 0.5s;
-  :hover {
-    transform: scale(1.05);
-    transition: transform 0.5s;
+  &:hover {
+    transform: rotateY(30deg);
+    box-shadow: 5px 1px 10px 10px rgba(0, 0, 0, 0.3);
   }
 `;
+
 
 export default Categories;

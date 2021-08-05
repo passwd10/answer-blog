@@ -67,8 +67,9 @@ const reset = css`
 `;
 
 const StyledLayout = styled.div`
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  background: linear-gradient(to top,#634c36,#f2d9cb);
 `;
 
 export default Layout;
