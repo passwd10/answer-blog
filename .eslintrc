@@ -14,6 +14,7 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "ignorePatterns": ["**/*.d.ts"],
   "rules": {
     "@typescript-eslint/no-empty-function": "off",
     "indent": ["error", 2, { "SwitchCase": 1 }],
