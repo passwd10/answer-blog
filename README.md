@@ -2,7 +2,7 @@
   Answer Blog
 </h1>
 
-## 🚀 Quick start
+## Quick start 🚀
 
 ```shell
 cd answer-blog
